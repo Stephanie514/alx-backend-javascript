@@ -51,6 +51,7 @@ function createEmployee(salary: number | string): Director | Teacher {
   }
 }
 
+
 // Testing createEmployee function
 console.log(createEmployee(200));
 console.log(createEmployee(1000));
