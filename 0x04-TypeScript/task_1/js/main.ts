@@ -9,6 +9,20 @@ interface Teacher {
   readonly location: string;
   [key: string]: any;
 }
+// Define the Directors interface that extends Teacher
+interface Directors extends Teacher {
+  numberOfReports: number;
+}
+
+// Define the printTeacher function
+function printTeacher(firstName: string, lastName: string): string {
+  return `${firstName.charAt(0)}. ${lastName}`;
+}
+
+// Define the interface for the printTeacher function
+interface printTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
 
 // Testing the interface
 const teacher3: Teacher = {
@@ -21,12 +35,7 @@ const teacher3: Teacher = {
 
 console.log(teacher3);
 
-// Defining the Directors interface that extends Teacher
-interface Directors extends Teacher {
-  numberOfReports: number;
-}
-
-// Testinhg the interface
+// Testing the interface
 const director1: Directors = {
   firstName: 'John',
   lastName: 'Doe',
@@ -36,3 +45,6 @@ const director1: Directors = {
 };
 
 console.log(director1);
+
+// Testing the printTeacher function
+console.log(printTeacher('John', 'Doe'));
