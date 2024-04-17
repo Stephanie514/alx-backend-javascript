@@ -51,8 +51,25 @@ function createEmployee(salary: number | string): Director | Teacher {
   }
 }
 
-
 // Testing createEmployee function
 console.log(createEmployee(200));
 console.log(createEmployee(1000));
 console.log(createEmployee('$500'));
+
+// Define the string literal type Subjects
+type Subjects = 'Math' | 'History';
+
+// Write the function teachClass
+function teachClass(todayClass: Subjects): string {
+  if (todayClass === 'Math') {
+    return 'Teaching Math';
+  } else if (todayClass === 'History') {
+    return 'Teaching History';
+  } else {
+    throw new Error('Invalid class');
+  }
+}
+
+// Testing the function
+console.log(teachClass('Math'));
+console.log(teachClass('History'));
