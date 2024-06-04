@@ -6,15 +6,16 @@ const serverHost = 'localhost';
 const server = http.createServer();
 
 server.on('request', (_, res) => {
-  res.setHeader('Content-Type', 'text/plain');
-  res.setHeader('Content-Length', 26); // Length of "Hello Holberton School!"
-  res.statusCode = 200;
+  const respText = 'Hello Ho;berton School!';
 
-  res.end('Hello Holberton School!\n');
+  res.setHeader('Content-Type', 'text/plain');
+  res.setHeader('Content-Length', respText.length); // Length of "Hello Holberton School!"
+  res.statusCode = 200;
+  res.write(Buffer.from(respText));
 });
 
 server.listen(serverPort, serverHost, () => {
-  console.log(`Server listening at -> http://${serverHost}:${serverPort}`);
+  process.stdout.write(`Server listening at -> http://${serverHost}:${serverPort}`);
 });
 
 module.exports = server;
