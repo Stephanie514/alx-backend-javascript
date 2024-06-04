@@ -1,4 +1,5 @@
 //program named 1-stdin
+
 process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
 process.stdin.on('data', (data) => {
