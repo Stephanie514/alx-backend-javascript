@@ -22,18 +22,19 @@ const app = http.createServer((req, res) => {
   if (req.url === '/') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('Hello Holberton School!\n');
-  }
+  }});
+
   // Handling requests for '/students'
   else if (req.url === '/students') {
     readDatabase(process.argv[2])
       .then((data) => {
-        const lines = data.split('\n').filter(line => line.trim() !== '');
+        const lines = data.split('\n').filter((line) => line.trim() !== '');
 
         if (lines.length === 0) {
           throw new Error('Cannot load the database');
         }
 
-        const students = lines.slice(1).map(line => line.split(',')).filter(student => student.length === 4);
+        const students = lines.slice(1).map((line) => line.split(',')).filter((student) => student.length === 4);
         const numberOfStudents = students.length;
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.write('This is the list of our students\n');
