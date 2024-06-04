@@ -1,3 +1,4 @@
+//  function named countStudents-accepts  path in argument (same as in 2-read_file.js
 const fs = require('fs');
 
 function countStudents(path) {
