@@ -1,11 +1,14 @@
-//program named 1-stdin.js
+//program on 1-stdin
 process.stdout.write("Welcome to Holberton School, what is your name?\n");
 
 process.stdin.setEncoding('utf8');
 
 process.stdin.on('data', (data) => {
-    process.stdout.write(`Your name is: ${data}`);
-    process.exit();
+    const name = data.toString().trim();
+    if (name) {
+        console.log(`Your name is: ${name}`);
+        process.exit();
+    }
 });
 
 process.on('exit', () => {
