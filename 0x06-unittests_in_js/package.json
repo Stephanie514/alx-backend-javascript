@@ -4,16 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require @babel/register 2-calcul_chai.test.js"
+    "test": "mocha --require @babel/register --recursive"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
+    "@babel/cli": "^7.24.7",
     "@babel/core": "^7.24.7",
     "@babel/preset-env": "^7.24.7",
     "@babel/register": "^7.24.6",
     "chai": "^4.4.1",
-    "mocha": "^8.4.0"
+    "mocha": "^8.4.0",
+    "sinon": "^9.2.4"
   }
 }
