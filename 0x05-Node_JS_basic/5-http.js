@@ -18,14 +18,12 @@ function readDatabase(databasePath) {
 
 // Create HTTP server
 const app = http.createServer((req, res) => {
-  // Handling requests for '/'
   if (req.url === '/') {
+    // Handling requests for '/'
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('Hello Holberton School!\n');
-  }});
-
-  // Handling requests for '/students'
-  else if (req.url === '/students') {
+  } else if (req.url === '/students') {
+    // Handling requests for '/students'
     readDatabase(process.argv[2])
       .then((data) => {
         const lines = data.split('\n').filter((line) => line.trim() !== '');
@@ -56,9 +54,10 @@ const app = http.createServer((req, res) => {
       })
       .catch((error) => {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end(error.message);
+        res.end(`${error.message}\n`);
       });
   } else {
+    // Handling requests for other paths
     res.writeHead(404, { 'Content-Type': 'text/plain' });
     res.end('Not Found\n');
   }
