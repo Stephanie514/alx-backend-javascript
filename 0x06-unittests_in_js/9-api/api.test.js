@@ -1,5 +1,22 @@
-const axios = require('axios');
+const request = require('request');
 const { expect } = require('chai');
+const axios = require('axios');
+
+describe('Cart page', () => {
+  it('Correct status code when :id is a number', (done) => {
+    request.get('http://localhost:7865/cart/12', (error, response, body) => {
+      expect(response.statusCode).to.equal(200);
+      done();
+    });
+  });
+
+  it('Correct status code when :id is NOT a number (=> 404)', (done) => {
+    request.get('http://localhost:7865/cart/hello', (error, response, body) => {
+      expect(response.statusCode).to.equal(404);
+      done();
+    });
+  });
+});
 
 describe('API integration test', () => {
   const API_URL = 'http://localhost:7865';
@@ -26,7 +43,7 @@ describe('API integration test', () => {
 
   it('GET /cart/:id returns 404 response for non-numeric values in :id', async () => {
     try {
-      await axios.get(`${API_URL}/cart/d200-44a5-9de6`);
+      await axios.get(`${API_URL}/cart/hello`);
     } catch (error) {
       expect(error.response.status).to.equal(404);
     }
