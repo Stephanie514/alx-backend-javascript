@@ -1,3 +1,4 @@
+
 const http = require('http');
 const fs = require('fs');
 
@@ -24,12 +25,21 @@ const app = http.createServer((req, res) => {
     res.end('Hello Holberton School!\n');
   } else if (req.url === '/students') {
     // Handling requests for '/students'
-    readDatabase(process.argv[2])
+    const databasePath = process.argv[2];
+    if (!databasePath) {
+      // If no database path provided, return 500 error
+      res.writeHead(500, { 'Content-Type': 'text/plain' });
+      res.end('Database path not provided\n');
+      return;
+    }
+
+    // Read the database
+    readDatabase(databasePath)
       .then((data) => {
         const lines = data.split('\n').filter((line) => line.trim() !== '');
 
         if (lines.length === 0) {
-          throw new Error('Cannot load the database');
+          throw new Error('Database is empty');
         }
 
         const students = lines.slice(1).map((line) => line.split(',')).filter((student) => student.length === 4);
