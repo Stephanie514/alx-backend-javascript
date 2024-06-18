@@ -19,11 +19,11 @@ function readDatabase(databasePath) {
 // Create HTTP server
 const app = http.createServer((req, res) => {
   if (req.url === '/') {
-    // Handling requests for '/'
+    // Handling '/' requests
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('Hello Holberton School!\n');
   } else if (req.url === '/students') {
-    // Handling requests for '/students'
+    // Handling '/students' requests
     const databasePath = process.argv[2];
     if (!databasePath) {
       // If no database path provided, return 500 error
@@ -66,7 +66,7 @@ const app = http.createServer((req, res) => {
         res.end(`${error.message}\n`);
       });
   } else {
-    // Handling requests for other paths
+    // Handling other path requests for other paths
     res.writeHead(404, { 'Content-Type': 'text/plain' });
     res.end('Not Found\n');
   }
